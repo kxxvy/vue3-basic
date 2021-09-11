@@ -4,4 +4,4 @@ import App from './App.vue'
 
 createApp(App).mount('#app')
 
-console.log('husky commit test')
+console.log('husky commit test2')
