@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <h2>{{ $store.state.name }}</h2>
+
     <router-link to="/login">登录</router-link>
     <router-link to="/main">首页</router-link>
     <router-view></router-view>
@@ -8,13 +10,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
 
 export default defineComponent({
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  components: {}
 })
 </script>
 

@@ -19,6 +19,8 @@ module.exports = {
   // },
   // 方式三：通过chainWebpack修改webpack的配置：
   chainWebpack: (config) => {
-    config.resolve.alias.set('@', path.resolve(__dirname, 'src')).set('components', '@/components')
+    config.resolve.alias
+      .set('@', path.resolve(__dirname, 'src'))
+      .set('components', '@/components')
   }
 }
