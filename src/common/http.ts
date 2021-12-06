@@ -81,7 +81,7 @@ const patch = async (url: string, params: any) => {
 }
 
 const upload = async (url: string, params: any) => {
-  let config = {
+  const config = {
     headers: {
       'Content-Type': 'multipart/form-data'
     }
@@ -120,7 +120,7 @@ instance.interceptors.request.use(async (config: any) => {
   const method = config.method.toUpperCase()
   const withParamMethods = ['GET', 'DELETE']
   const methodFlag = withParamMethods.some((item) => item == method)
-  let params = methodFlag ? config.params : qs.parse(config.data)
+  const params = methodFlag ? config.params : qs.parse(config.data)
   const curTimeStamp = new Date().getTime() / 1000
   const curDate = window.utils.formatDate(curTimeStamp, 'yyyy-MM-dd hh:mm:ss')
   const authStr = await _hamcShaV2(url, method, params, curDate)
@@ -192,8 +192,8 @@ async function _hamcShaV2(
       localStorage.setItem('authKey', key)
       localStorage.setItem('authSecret', secret)
     }
-    let sortParamsEncode = decodeURIComponent(changeDataType(ksort(params)))
-    let encryptStr =
+    const sortParamsEncode = decodeURIComponent(changeDataType(ksort(params)))
+    const encryptStr =
       path +
       '|' +
       method.toUpperCase() +
@@ -201,7 +201,7 @@ async function _hamcShaV2(
       sortParamsEncode +
       '|' +
       datetime
-    let digest = CryptoJS.enc.Base64.stringify(
+    const digest = CryptoJS.enc.Base64.stringify(
       CryptoJS.HmacSHA256(encryptStr, secret)
     )
     const authStr = `${key} ${digest}`
@@ -217,11 +217,11 @@ function ksort(unordered: { [x: string]: any }) {
     }, {})
   return ordered
 }
-var nextStr = ''
+let nextStr = ''
 function changeDataType(obj: { [x: string]: any }) {
   let str = ''
   if (typeof obj == 'object') {
-    for (let i in obj) {
+    for (const i in obj) {
       if (typeof obj[i] != 'function' && typeof obj[i] != 'object') {
         str += i + '=' + obj[i] + '&'
       } else if (typeof obj[i] == 'object') {
@@ -234,9 +234,9 @@ function changeDataType(obj: { [x: string]: any }) {
 }
 function changeSonType(objName: string, objValue: { [x: string]: any }) {
   if (typeof objValue == 'object') {
-    for (let i in objValue) {
+    for (const i in objValue) {
       if (typeof objValue[i] != 'object') {
-        let value = objName + '[' + i + ']=' + objValue[i]
+        const value = objName + '[' + i + ']=' + objValue[i]
         nextStr += encodeURI(value) + '&'
       } else {
         changeSonType(objName + '[' + i + ']', objValue[i])

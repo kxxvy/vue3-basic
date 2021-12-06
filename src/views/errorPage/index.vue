@@ -6,12 +6,7 @@
 import Errors from './error.vue'
 export default {
   name: 'errorPage',
-  components: { Errors },
-  data() {
-    return {}
-  },
-  created: function () {},
-  methods: {}
+  components: { Errors }
 }
 </script>
 <style lang="less" scoped>

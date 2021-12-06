@@ -1,17 +1,20 @@
 const cdn = {
   js: [
     'https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js',
-    'https://ydcommon.51yund.com/vue/crypto-js.min.js',
+    'https://ydcommon.51yund.com/vue/crypto-js.min.js'
   ],
-  css: [
-    'https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css',
-  ]
+  css: ['https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css']
 }
 
 module.exports = {
   lintOnSave: false,
   outputDir: './build',
-  publicPath: process.env.env_config === 'prod' ? '/apps/web/' : process.env.env_config === 'test' ? '/vapps/peExam/' : '/',
+  publicPath:
+    process.env.env_config === 'prod'
+      ? '/apps/web/'
+      : process.env.env_config === 'test'
+      ? '/vapps/peExam/'
+      : '/',
   // 设置跨域
   crossorigin: 'anonymous',
   /**
@@ -35,7 +38,7 @@ module.exports = {
   pluginOptions: {
     // 设置线上部署路径，发布时请修改 eg: /data2/wwwroot/web/vue/vapps/vip
     onlineRootPath: '/apps/web',
-    testRootPath: '/data2/wwwroot/web_lip/vue/vapps/peExam',
+    testRootPath: '/data2/wwwroot/web_lip/vue/vapps/peExam'
   },
 
   chainWebpack: (config) => {
@@ -47,11 +50,13 @@ module.exports = {
 
   configureWebpack: {
     module: {
-      rules: [{
-        test: /\.mjs$/,
-        include: /node_modules/,
-        type: "javascript/auto"
-      }]
+      rules: [
+        {
+          test: /\.mjs$/,
+          include: /node_modules/,
+          type: 'javascript/auto'
+        }
+      ]
     },
     externals: {
       'crypto-js': 'CryptoJS',

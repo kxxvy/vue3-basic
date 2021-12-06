@@ -6,23 +6,23 @@ const utils = {
   },
   formatDate: function (value: number, fmt: string) {
     if (!value) return ''
-    let timeSc = new Date(value * 1000)
+    const timeSc = new Date(value * 1000)
     if (/(y+)/.test(fmt)) {
       fmt = fmt.replace(
         RegExp.$1,
         (timeSc.getFullYear() + '').substr(4 - RegExp.$1.length)
       )
     }
-    let o = {
+    const o = {
       'M+': timeSc.getMonth() + 1,
       'd+': timeSc.getDate(),
       'h+': timeSc.getHours(),
       'm+': timeSc.getMinutes(),
       's+': timeSc.getSeconds()
     }
-    for (let k in o) {
+    for (const k in o) {
       if (new RegExp(`(${k})`).test(fmt)) {
-        let str = o[k] + ''
+        const str = o[k] + ''
         fmt = fmt.replace(
           RegExp.$1,
           RegExp.$1.length === 1 ? str : padLeftZero(str)
@@ -40,15 +40,15 @@ const utils = {
   formatDuration: (value: number, fmt: string) => {
     value = +value
     if (value <= 0) return 0
-    let o = {
+    const o = {
       'd+': ~~(value / 86400),
       'h+': ~~((value % 86400) / 3600),
       'm+': ~~(((value % 86400) % 3600) / 60),
       's+': ((value % 86400) % 3600) % 60
     }
-    for (let k in o) {
+    for (const k in o) {
       if (new RegExp(`(${k})`).test(fmt)) {
-        let str = o[k] + ''
+        const str = o[k] + ''
         fmt = fmt.replace(
           RegExp.$1,
           RegExp.$1.length === 1 ? str : utils.padLeftZero(str)
@@ -72,7 +72,7 @@ const utils = {
     return new Promise((resolve, reject) => {
       let loadLen = 0
       list.forEach((item: string) => {
-        let img = new Image()
+        const img = new Image()
         img.src = item
         img.onload = () => {
           loadLen++

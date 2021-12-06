@@ -12,7 +12,7 @@ const types = [
   'style', // 不影响程序逻辑的代码修改、主要是样式方面的优化、修改
   'test', // 测试相关的开发
   'sync' // 同步主线或分支的Bug
-];
+]
 
 typeEnum = {
   rules: {
@@ -22,9 +22,7 @@ typeEnum = {
 }
 
 module.exports = {
-  extends: [
-    "@commitlint/config-conventional"
-  ],
+  extends: ['@commitlint/config-conventional'],
   rules: {
     'type-case': [0],
     'type-empty': [2, 'never'],
@@ -35,4 +33,4 @@ module.exports = {
     'header-max-length': [0, 'always', 72],
     'type-enum': typeEnum.rules['type-enum']
   }
-};
+}
