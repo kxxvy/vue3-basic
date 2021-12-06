@@ -1,0 +1,40 @@
+@import url(./root.less);
+.valid-red{
+    border: 1px solid #ea1717;
+}
+.search-wrapper{
+    >div{
+        margin:0 10px 10px 0;
+        display: inline-block;
+    }
+    margin-bottom: 20px;
+    color: #666
+}
+.login{
+    .el-dialog{
+        width: 400px;
+        .dialog-footer{
+            text-align: center;
+            .el-button{
+                width: 217px;
+            }
+        }
+
+    }
+}
+body,main,aside,section,div {
+    &::-webkit-scrollbar {
+      width: @scrollBarSize;
+      height: @scrollBarSize;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: @scrollBarSize;
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+      background: #cccccc;
+    }
+    &::-webkit-scrollbar-track {
+      background: #fff;
+    }
+}
+
+
