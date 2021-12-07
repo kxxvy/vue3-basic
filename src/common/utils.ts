@@ -84,27 +84,7 @@ const utils = {
     })
   },
 
-  throttle(
-    fn: {
-      apply: (
-        arg0: {
-          padLeftZero: (str: any) => string
-          formatDate: (value: any, fmt: any) => any
-          //秒转时长   1314 => 00:21:54
-          formatDuration: (value: any, fmt: any) => any
-          formatNumber: (n: any) => any
-          // 去除首尾空格
-          trimStr(str: any): any
-          preloadImg(list: any, callback: any): Promise<unknown>
-          throttle(fn: any, delay: any): (...args: any[]) => void
-          debounce(fn: any, delay: any): (...args: any[]) => void
-          voicePrompt: (readWords: any) => void
-        },
-        arg1: any[]
-      ) => void
-    },
-    delay: number
-  ) {
+  throttle(fn: any, delay: any) {
     let last = 0 // 上次触发时间
     return (...args: any) => {
       const now = Date.now()
@@ -115,27 +95,7 @@ const utils = {
     }
   },
 
-  debounce(
-    fn: {
-      apply: (
-        arg0: {
-          padLeftZero: (str: any) => string
-          formatDate: (value: any, fmt: any) => any
-          //秒转时长   1314 => 00:21:54
-          formatDuration: (value: any, fmt: any) => any
-          formatNumber: (n: any) => any
-          // 去除首尾空格
-          trimStr(str: any): any
-          preloadImg(list: any, callback: any): Promise<unknown>
-          throttle(fn: any, delay: any): (...args: any[]) => void
-          debounce(fn: any, delay: any): (...args: any[]) => void
-          voicePrompt: (readWords: any) => void
-        },
-        arg1: any[]
-      ) => void
-    },
-    delay: number | undefined
-  ) {
+  debounce(fn: any, delay: any) {
     let timer: number | undefined
     return (...args: any) => {
       if (timer) clearTimeout(timer)
