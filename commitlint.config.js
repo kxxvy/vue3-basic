@@ -14,7 +14,7 @@ const types = [
   'sync' // 同步主线或分支的Bug
 ]
 
-typeEnum = {
+const typeEnum = {
   rules: {
     'type-enum': [2, 'always', types]
   },

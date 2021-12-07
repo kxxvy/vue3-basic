@@ -182,31 +182,23 @@ async function _hamcShaV2(
   params = {},
   datetime: string
 ) {
-  return new Promise(async (resolve) => {
-    let key: any = localStorage.getItem('authKey')
-    let secret: any = localStorage.getItem('authSecret')
-    if (!key || !secret) {
-      const authInfo: any = await getAuthorizeInfo()
-      key = authInfo.data.business_key
-      secret = authInfo.data.business_secret
-      localStorage.setItem('authKey', key)
-      localStorage.setItem('authSecret', secret)
-    }
-    const sortParamsEncode = decodeURIComponent(changeDataType(ksort(params)))
-    const encryptStr =
-      path +
-      '|' +
-      method.toUpperCase() +
-      '|' +
-      sortParamsEncode +
-      '|' +
-      datetime
-    const digest = CryptoJS.enc.Base64.stringify(
-      CryptoJS.HmacSHA256(encryptStr, secret)
-    )
-    const authStr = `${key} ${digest}`
-    resolve(authStr)
-  })
+  let key: any = localStorage.getItem('authKey')
+  let secret: any = localStorage.getItem('authSecret')
+  if (!key || !secret) {
+    const authInfo: any = await getAuthorizeInfo()
+    key = authInfo.data.business_key
+    secret = authInfo.data.business_secret
+    localStorage.setItem('authKey', key)
+    localStorage.setItem('authSecret', secret)
+  }
+  const sortParamsEncode = decodeURIComponent(changeDataType(ksort(params)))
+  const encryptStr =
+    path + '|' + method.toUpperCase() + '|' + sortParamsEncode + '|' + datetime
+  const digest = CryptoJS.enc.Base64.stringify(
+    CryptoJS.HmacSHA256(encryptStr, secret)
+  )
+  const authStr = `${key} ${digest}`
+  return authStr
 }
 function ksort(unordered: { [x: string]: any }) {
   const ordered = Object.keys(unordered)
