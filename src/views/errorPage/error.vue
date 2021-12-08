@@ -6,27 +6,35 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'pageErr',
-  data() {
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+import { useRouter } from 'vue-router'
+
+export default defineComponent({
+  setup() {
+    let tipWords
+    let desWords
+    tipWords = ref('对不起，您没有权限')
+    desWords = ref('请联系管理员开通本页面的权限再来访问吧~')
+
+    const router = useRouter()
+
+    if (router.currentRoute.value.path === '/404') {
+      tipWords = '找不到页面'
+      desWords = '请检查您输入的网址是否正确'
+    }
+
+    const back = () => {
+      router.replace('/')
+    }
+
     return {
-      tipWords: '对不起，您没有权限',
-      desWords: '请联系管理员开通本页面的权限再来访问吧~'
-    }
-  },
-  created() {
-    if (this.$route.path === '/404') {
-      this.tipWords = '找不到页面'
-      this.desWords = '请检查您输入的网址是否正确'
-    }
-  },
-  methods: {
-    back() {
-      this.$router.back()
+      tipWords,
+      desWords,
+      back
     }
   }
-}
+})
 </script>
 <style lang="less" scoped>
 .animat(@duration, @delay) {

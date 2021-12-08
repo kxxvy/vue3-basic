@@ -3,11 +3,12 @@
 </template>
 
 <script>
+import { defineComponent } from 'vue'
 import Errors from './error.vue'
-export default {
+export default defineComponent({
   name: 'errorPage',
   components: { Errors }
-}
+})
 </script>
 <style lang="less" scoped>
 .animat(@duration, @delay) {
