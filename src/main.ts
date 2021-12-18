@@ -9,8 +9,12 @@ import 'normalize.css'
 import './style/global.less'
 import './style/reset.less'
 import './style/common.less'
+import eventBus from '@/common/eventBus'
 
 //全局注入
 injectGlobal()
 
-createApp(App).use(router).use(store).use(ElementPlus).mount('#app')
+const app = createApp(App)
+app.config.globalProperties.$eventBus = eventBus
+
+app.use(router).use(store).use(ElementPlus).mount('#app')

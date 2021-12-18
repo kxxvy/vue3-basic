@@ -2,8 +2,6 @@
 import qs from 'qs'
 import axios, { AxiosRequestConfig } from 'axios'
 import router from '../router/index'
-// import NProgress from 'nprogress'
-// import CryptoJS from 'crypto-js'
 import { basePath } from '@/config/env'
 import urls from '@/server/urls'
 import { ElMessage } from 'element-plus'

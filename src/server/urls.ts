@@ -1,3 +1,4 @@
 export default {
-  auth: '/api/authorized/auth'
+  auth: '/api/authorized/auth',
+  getUserInfo: '/xxx'
 }

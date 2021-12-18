@@ -17,4 +17,7 @@ interface Window {
     debounce(fn: any, delay: any): (...args: any[]) => void
     voicePrompt: (readWords: any) => void
   }
+  tool: {
+    md5Encrypt(psd: any): string
+  }
 }

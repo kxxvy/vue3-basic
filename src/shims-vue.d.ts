@@ -5,8 +5,8 @@ declare module '*.vue' {
   export default component
 }
 
-declare let $store: any
+declare const $store: any
 declare module '*.json'
 
-declare let CryptoJS: any
-declare let NProgress: any
+declare const CryptoJS: any
+declare const NProgress: any
