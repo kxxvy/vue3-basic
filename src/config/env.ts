@@ -4,7 +4,7 @@ const appVersion = 1 //sso登录服务的版本，默认为第一版
 const logFlag = {
   dev: false, // 开发和测试环境是否上报log
   from: false, // 是否上传页面来源
-  packageName: 'pe-exam-cms'
+  packageName: 'vue3-basic'
 }
 
 const isDevEnv = process.env.NODE_ENV == 'development'
