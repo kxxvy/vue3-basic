@@ -1,24 +1,30 @@
 <template>
   <div id="app">
-    <h2>{{ userInfo.name }}</h2>
-
-    <router-link to="/login">登录</router-link>
-    <router-link to="/main">首页</router-link>
-    <router-view></router-view>
+    <el-config-provider :locale="zhCn">
+      <router-view v-slot="{ Component }">
+        <keep-alive>
+          <component :is="Component" v-if="$route.meta.keepAlive" />
+        </keep-alive>
+        <component :is="Component" v-if="!$route.meta.keepAlive" />
+      </router-view>
+    </el-config-provider>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useState } from '@/hooks'
+
+import { ElConfigProvider } from 'element-plus'
+import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 
 export default defineComponent({
   name: 'App',
-  components: {},
+  components: {
+    ElConfigProvider
+  },
   setup() {
-    const storeInfo = useState('modules', ['userInfo'])
     return {
-      ...storeInfo
+      zhCn
     }
   }
 })

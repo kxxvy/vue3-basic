@@ -1,10 +1,14 @@
+interface IMethods {
+  (url: string, params: any): Promise<any>
+}
+
 interface Window {
   $http: {
-    post: any
-    get: any
-    delete: any
-    patch: any
-    upload: any
+    post: IMethods
+    get: IMethods
+    delete: IMethods
+    patch: IMethods
+    upload: IMethods
   }
   utils: {
     padLeftZero(str: string | any[]): string
