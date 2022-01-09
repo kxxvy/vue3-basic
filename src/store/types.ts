@@ -1,2 +1,2 @@
-import { IModuleState } from './modules/types'
-export type IRootState = IModuleState
+import { IHomeState } from './modules/home/types'
+export interface IRootState extends IHomeState {}

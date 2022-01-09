@@ -3,9 +3,9 @@ import { RouteRecordRaw } from 'vue-router'
 
 import error from './map/error'
 import login from './map/login'
-import main from './map/main'
+import home from './map/home'
 
-const routes: RouteRecordRaw[] = [...login, ...error, ...main]
+const routes: RouteRecordRaw[] = [...login, ...error, ...home]
 
 const router = createRouter({
   routes,
