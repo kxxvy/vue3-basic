@@ -1,11 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { RouteRecordRaw } from 'vue-router'
 
-import error from './map/error'
-import login from './map/login'
-import home from './map/home'
-
-const routes: RouteRecordRaw[] = [...login, ...error, ...home]
+const routes: RouteRecordRaw[] = []
+const files = require.context('./map', false, /.ts$/)
+files.keys().forEach((key) => {
+  const route = files(key).default
+  if (Array.isArray(route)) {
+    for (let item of route) {
+      routes.push(item)
+    }
+  } else {
+    routes.push(route)
+  }
+})
 
 const router = createRouter({
   routes,
